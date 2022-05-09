@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:SpiritLeadRevivalApp.Models" 
+             xmlns:controls="clr-namespace:SpiritLeadRevivalApp.Controls;assembly=SpiritLeadRevivalApp"
+             x:DataType="viewmodels:HomeRoot"
+             x:Class="SpiritLeadRevivalApp.Views.HomePage" BackgroundColor="Moccasin">
+    <ContentPage.BindingContext>
+        <viewmodels:HomeRoot></viewmodels:HomeRoot>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+<StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand">
+            <Frame CornerRadius="0" Padding="0">
+                <Image Source="spiritleadlogobluebg"></Image></Frame>
+                    <StackLayout Padding="5" HorizontalOptions="CenterAndExpand" Margin="4,0"
+                         BackgroundColor="{StaticResource Primary}">
+                        <Label TextColor="GhostWhite" HorizontalTextAlignment="Center" TextDecorations="Underline">Today's Scripture</Label>
+                        <Label x:Name="DailyScriptureLabel" Text="{Binding dailyScripture.verse}" TextColor="GhostWhite"></Label>
+                    </StackLayout>
+        </StackLayout>
+            <CarouselView ItemsSource="{Binding carouselItems}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout x:DataType="viewmodels:CarouselItem">
+                        <Frame HasShadow="True" BorderColor="{StaticResource Primary}"
+                               CornerRadius="5" Margin="20" HeightRequest="300"
+                               HorizontalOptions="Center">
+                            <StackLayout>
+                                <Image Source="{Binding imageURL}" />
+                                <Label Text="{Binding caption}"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+</StackLayout>
+    </ContentPage.Content>
+</ContentPage>

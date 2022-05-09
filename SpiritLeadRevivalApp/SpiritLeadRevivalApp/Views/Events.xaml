@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpiritLeadRevivalApp.Views.Events"
+             xmlns:viewmodels="clr-namespace:SpiritLeadRevivalApp.Models;assembly=SpiritLeadRevivalApp">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Primary}" Margin="20">
+            <Label Text="Events" HorizontalOptions="Center" Margin="0,3,0,-5" TextDecorations="Underline" />
+            <CollectionView x:Name="EventsCollectionView" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" x:DataType="viewmodels:Event">
+                            <Label Text="{Binding title}" x:Name="EventsTitle"
+                                   LineBreakMode="NoWrap" TextDecorations="Underline" TextColor="GhostWhite"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="16" />
+                            <Label HorizontalOptions="Center" TextType="Html" Text="{Binding description}"
+                                   TextColor="GhostWhite"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
